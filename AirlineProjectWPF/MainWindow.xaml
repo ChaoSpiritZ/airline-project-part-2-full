@@ -1,0 +1,58 @@
+﻿<Window x:Class="AirlineProjectWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AirlineProjectWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <StackPanel Margin="30">
+        <StackPanel Orientation="Horizontal" Margin="0 5">
+            <Label Content="Countries: " FontSize="15" Width="160"/>
+            <TextBox x:Name="TxtBoxCountries" Width="150" Margin="30 0 0 0" FontSize="15"
+                     Text="{Binding Countries, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 5">
+            <Label Content="Airline Companies: " FontSize="15" Width="160"/>
+            <TextBox x:Name="TxtBoxAirlineCompanies" Width="150" Margin="30 0 0 0" FontSize="15"
+                     Text="{Binding AirlineCompanies, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 5">
+            <Label Content="Customers: " FontSize="15" Width="160"/>
+            <TextBox x:Name="TxtBoxCustomers" Width="150" Margin="30 0 0 0" FontSize="15"
+                     Text="{Binding Customers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 5">
+            <Label Content="Flights Per Company: " FontSize="15" Width="160"/>
+            <TextBox x:Name="TxtBoxFlightsPerCompany" Width="150" Margin="30 0 0 0" FontSize="15"
+                     Text="{Binding FlightsPerCompany, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="0 5">
+            <Label Content="Tickets Per Customer: " FontSize="15" Width="160"/>
+            <TextBox x:Name="TxtBoxTicketsPerCustomer" Width="150" Margin="30 0 0 0" FontSize="15"
+                     Text="{Binding TicketsPerCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" Margin="0 10">
+            <Button Content="Add to DB" FontSize="15" Padding="3" Margin="50 0"
+                    Command="{Binding AddToDB}"/>
+            <Button Content="Replace DB" FontSize="15" Padding="3" Margin="30 0 0 0"
+                    Command="{Binding ReplaceDB}"/>
+        </StackPanel>
+        
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Progress: " FontSize="15"/>
+            <Label x:Name="LblProgress" Content="{Binding ProgressText}" FontSize="15"/>
+        </StackPanel>
+        
+        <ProgressBar Width="732" Height="25" Minimum="0" Maximum="100" Value="{Binding ProgressBar}" HorizontalAlignment="Left" Margin="0 10" />
+
+        <Label Content="Log: " FontSize="15"/>
+        <Border BorderBrush="Black" BorderThickness="3" Height="140">
+        <TextBlock x:Name="TxtBlockLog" Text="{Binding LogText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" FontSize="15" LineHeight="5" Width="500" HorizontalAlignment="Left" Margin="10 0" />
+        </Border>
+    </StackPanel>
+</Window>
